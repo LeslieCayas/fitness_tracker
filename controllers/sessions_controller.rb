@@ -1,14 +1,31 @@
 get '/login' do
-  erb :'/sessions/login'
+  erb :'/sessions/login', locals: { error_message: ''}
 end
 
 post '/sessions' do  # Login to website
-  email = params["email"]
+  email = params[:email]
   password = params["password"]
   # user = find user function
   # if user and password are correct - redirect to welcome page showing ""
+  puts email
+  user = find_user_by("email", email, nil)
+
+  if user && BCrypt::Password.new(user['password']) == password
+    session[:user_id] = user['id']
+    redirect "/welcome"
+  else
+    erb :'/sessions/login', locals: { error_message: 'Incorrect password'}
+  end
+
+  is_logged_in?
+
 end 
 
 get '/welcome' do
   erb :index, layout: :layout
+end
+
+delete '/sessions' do
+  session[:user_id] = nil
+  redirect '/'
 end
