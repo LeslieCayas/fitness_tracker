@@ -11,7 +11,7 @@ end
 
 def current_user
   if is_logged_in?
-    return find_user_by_id("id", nil, session[:user_id] )
+    return find_user_by( "id", nil, session[:user_id] )
   else
     return nil
   end

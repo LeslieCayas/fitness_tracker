@@ -22,6 +22,8 @@ post '/sessions' do  # Login to website
 end 
 
 get '/welcome' do
+  #  puts current_user['id'] # shows id of current user (use this to put into table)
+
   erb :index, layout: :layout
 end
 
