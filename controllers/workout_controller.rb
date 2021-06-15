@@ -26,8 +26,11 @@ post '/workouts' do
 end
 
 get '/workouts/:id' do |id|     # Read individual selected workout
+  query = "SELECT workouts.id AS workout_id, user_id, workout_name, exercises.id AS exercise_id, name, image_url, weight, sets, reps FROM workouts LEFT JOIN exercises ON workouts.id = exercises.workout_id WHERE workout_id = $1"
+  sql_params = [id]
+  results = run_sql(query, sql_params)
 
-  erb :'workouts/show_workout'
+  erb :'workouts/show_workout', locals: {individual_workout: results}
 end
 
 get '/workouts/:id/add' do |id| 
@@ -45,7 +48,10 @@ post '/workouts/:id' do |id|
   redirect "/workouts/#{id}"
 end
 
+
 post '/workouts/:workout_title/:exercise_name' do |workout_title, exercise_name|
 
   
 end
+
+# select user_id, workout_name, name, image_url, weight, reps, sets FROM workouts JOIN exercises ON workouts.id = exercises.workout_id WHERE workout_id = 15

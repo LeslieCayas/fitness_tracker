@@ -2,3 +2,16 @@
 join table?
 
 %>
+<main id="individual-routine">
+  <% individual_workout.each do |exercise| %>
+    <div>
+      <li><%= exercise['name']%> <a href="">Edit</a></li>
+      <li><img src="<%= exercise['image_url']%>" alt=""></li>
+      <li>Weight: <%= exercise['weight']%></li>
+      <li>Reps: <%= exercise['reps']%></li>
+      <li>Sets: <%= exercise['sets']%></li> 
+    </div>
+  <% end %>
+</main>
+
+
