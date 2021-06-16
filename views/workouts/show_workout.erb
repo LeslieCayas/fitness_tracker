@@ -1,23 +1,42 @@
-<%# show individual workout 
-join table?
+<% if error_message.empty?%>
+  <% if individual_workout.to_a.length == 0 %>
 
-%>
-<h2><%=individual_workout[0]['workout_name']%></h2>
-<main id="individual-routine">
-  <% individual_workout.each do |exercise| %>
-    <div>
-      <li><%= exercise['name']%> <a href="/workouts/<%=exercise['workout_id']%>/<%=exercise['exercise_id']%>/edit">Edit</a>
-        <form action="/workouts/<%=exercise['workout_id']%>/<%=exercise['exercise_id']%>" method="POST">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="Delete">
-        </form>
-      </li>
-      <li><img src="<%= exercise['image_url']%>" alt=""></li>
-      <li>Weight: <%= exercise['weight']%></li>
-      <li>Reps: <%= exercise['reps']%></li>
-      <li>Sets: <%= exercise['sets']%></li> 
-    </div>
+    <p>You have no exercises added!</p>
+    <a href="/workouts/<%=params[:id]%>/add">Add exercises</a>
+    <form action="/workouts/<%=workout_id%>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete workout">
+    </form>
+
+  <% else %>
+
+    <h2><%=individual_workout[0]['workout_name']%></h2>
+
+    <form action="/workouts/<%=individual_workout[0]['workout_id']%>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete workout">
+    </form>
+
+
+    <main id="individual-routine">
+      <% individual_workout.each do |exercise| %>
+        <div>
+          <li><%= exercise['name']%> <a href="/workouts/<%=exercise['workout_id']%>/<%=exercise['exercise_id']%>/edit">Edit</a>
+            <form action="/workouts/<%=exercise['workout_id']%>/<%=exercise['exercise_id']%>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete exercise">
+            </form>
+          </li>
+          <li><img src="<%= exercise['image_url']%>" alt=""></li>
+          <li>Weight: <%= exercise['weight']%></li>
+          <li>Reps: <%= exercise['reps']%></li>
+          <li>Sets: <%= exercise['sets']%></li> 
+        </div>
+      <% end %>
+    </main>
+
   <% end %>
-</main>
-
-
+<% else %>
+  <%=error_message%>
+  <a href="/">Home</a>
+<% end %>
