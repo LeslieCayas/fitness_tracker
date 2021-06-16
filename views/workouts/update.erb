@@ -1,0 +1,31 @@
+<h2>Edit <%=individual_workout['name']%></h2>
+<form action='/workouts/<%=individual_workout['workout_id']%>/<%=individual_workout['exercise_id']%>' method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <label for="exercise">
+    Exercise name:
+  </label>
+  <input type="text" name="exercise">
+
+  <label for="image_url">
+    Exercise image:
+  </label>
+  <input type="text" name="image_url">
+
+  <label for="weight">
+    Weight:
+  </label>
+  <input type="text" name="weight">
+
+  <label for="reps">
+    Reps:
+  </label>
+  <input type="text" name="reps">
+
+  <label for="sets">
+    Sets:
+  </label>
+  <input type="text" name="sets">
+
+  <input type="submit">
+
+</form>
