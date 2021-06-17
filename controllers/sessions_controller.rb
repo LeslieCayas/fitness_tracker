@@ -4,10 +4,9 @@ end
 
 post '/sessions' do  # Login to website
   email = params[:email]
-  password = params["password"]
+  password = params[:password]
   # user = find user function
   # if user and password are correct - redirect to welcome page showing ""
-  puts email
   user = find_user_by("email", email, nil)
 
   if user && BCrypt::Password.new(user['password']) == password
@@ -17,7 +16,6 @@ post '/sessions' do  # Login to website
     erb :'/sessions/login', locals: { error_message: 'Incorrect password'}
   end
 
-  is_logged_in?
 
 end 
 

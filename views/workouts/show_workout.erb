@@ -1,12 +1,14 @@
 <% if error_message.empty?%>
   <% if individual_workout.to_a.length == 0 %>
+    <main class="empty-workout">
+      <p>You have no exercises added!</p>
+      <a href="/workouts/<%=workout_id%>/add">Add exercises</a>
+      <form action="/workouts/<%=workout_id%>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete workout">
+      </form>
+    </main>
 
-    <p>You have no exercises added!</p>
-    <a href="/workouts/<%=params[:id]%>/add">Add exercises</a>
-    <form action="/workouts/<%=workout_id%>" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete workout">
-    </form>
 
   <% else %>
 
@@ -36,7 +38,10 @@
     </main>
 
   <% end %>
+
 <% else %>
+
   <%=error_message%>
   <a href="/">Home</a>
+  
 <% end %>

@@ -1,30 +1,48 @@
 <h2>Add an exercise to your workout</h2>
-<form action='/workouts/<%=individual_workout['id']%>' method="POST">
-  <label for="exercise">
-    Exercise name:
-  </label>
-  <input type="text" name="exercise">
+<form action='/workouts/<%=individual_workout[0]['id']%>' method="POST">
 
-  <label for="image_url">
-    Exercise image:
-  </label>
-  <input type="text" name="image_url">
+  <div>
+    <label for="exercise">
+      Exercise name:
+    </label>
+    <input type="text" name="exercise">
+  </div>
 
-  <label for="weight">
-    Weight:
-  </label>
-  <input type="text" name="weight">
+  <div>
+    <label for="image_url">
+      Exercise image:
+    </label>
+    <input type="text" name="image_url">
+  </div>
 
-  <label for="reps">
-    Reps:
-  </label>
-  <input type="text" name="reps">
+  <div>
+    <label for="weight">
+      Weight:
+    </label>
+    <input type="text" name="weight">
+  </div>
 
-  <label for="sets">
-    Sets:
-  </label>
-  <input type="text" name="sets">
+  <div>
+    <label for="reps">
+      Reps:
+    </label>
+    <input type="text" name="reps">
+  </div>
 
+  <div>
+    <label for="sets">
+      Sets:
+    </label>
+    <input type="text" name="sets">
+  </div>
+
+  <div>
+    <label for="notes">
+      Notes:
+    </label>
+    <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+  </div>
   <input type="submit">
 
 </form>
+

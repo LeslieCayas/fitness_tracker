@@ -32,12 +32,12 @@ end
 
 get '/workouts/:id/add' do |id| 
   results = select_user_workouts(id)
-
-  erb :'workouts/exercises/create', locals: {individual_workout: results[0]}
+  workout_id = id
+  erb :'workouts/exercises/create', locals: {individual_workout: results[0], workout_id: workout_id}
 end
 
 post '/workouts/:id' do |id|
-  results = new_exercise(id, params[:exercise], params[:image_url], params[:weight], params[:reps], params[:sets])
+  results = new_exercise(id, params[:exercise], params[:image_url], params[:weight], params[:reps], params[:sets], params[:notes])
   
   redirect "workouts/#{id}"
 end
@@ -56,8 +56,8 @@ get '/workouts/:workout_id/:exercise_id' do |workout_id, exercise_id|
 end
 
 put '/workouts/:workout_id/:exercise_id' do |workout_id, exercise_id|
-  results = update_exercise(params[:exercise], params[:image_url], params[:weight], params[:reps], params[:sets], exercise_id)
-  redirect "workouts/#{workout_id}/#{exercise_id}"
+  results = update_exercise(params[:exercise], params[:image_url], params[:weight], params[:reps], params[:sets], params[:notes], params[:exercise_id])
+  redirect "workouts/#{workout_id}"
 end
 
 delete '/workouts/:workout_id/:exercise_id' do |workout_id, exercise_id|

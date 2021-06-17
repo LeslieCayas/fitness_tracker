@@ -27,15 +27,15 @@ def select_joint_table(workout_id)
   run_sql(query, sql_params)
 end
 
-def new_exercise(workout_id, exercise_name, image_url, weight, reps, sets)
-  query = "INSERT INTO exercises(workout_id, name, image_url, weight, reps, sets) VALUES($1,$2,$3,$4,$5,$6)"
-  sql_params = [workout_id, exercise_name, image_url, weight, reps, sets]
+def new_exercise(workout_id, exercise_name, image_url, weight, reps, sets, notes)
+  query = "INSERT INTO exercises(workout_id, name, image_url, weight, reps, sets, notes) VALUES($1, $2, $3, $4, $5, $6, $7)"
+  sql_params = [workout_id, exercise_name, image_url, weight, reps, sets, notes]
   run_sql(query, sql_params)
 end
 
-def update_exercise(name, image, weight, reps, sets, exercise_id)
-  query = "UPDATE exercises SET name = $1, image_url = $2, weight = $3, reps = $4, sets = $5 WHERE id = $6"
-  sql_params = [name, image, weight, reps, sets, exercise_id]
+def update_exercise(name, image, weight, reps, sets, notes, exercise_id)
+  query = "UPDATE exercises SET name = $1, image_url = $2, weight = $3, reps = $4, sets = $5, notes= $6 WHERE id = $7"
+  sql_params = [name, image, weight, reps, sets, notes, exercise_id]
   run_sql(query, sql_params)
 end
 

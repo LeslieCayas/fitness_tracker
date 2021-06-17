@@ -1,5 +1,6 @@
 <%# welcome page %>
-<h2>Hello</h2>
+<h2>Hello,</h2>
+<main class="landing">
 <% if is_logged_in? %>
   <%=current_user['username']%>
   <form action="/sessions" method="POST">
@@ -8,7 +9,11 @@
   </form>
   <a href="/workouts"> see your workouts</a> or 
   <a href="/workouts/create"> create a workout </a>
+</main>
 <% else %>
-  <a href="/login">sign in to your account</a> or
-  <a href="/sign_up">sign up for a new account</a>
+  <p>
+    <a href="/login">sign in to your account</a> or
+    <a href="/sign_up">sign up for a new account</a>
+  </p> 
+</main>
 <% end %>

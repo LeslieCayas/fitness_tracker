@@ -1,3 +1,80 @@
 body {
-  background-color:rgba(255, 255, 255, 0.884)
+  background-color:#F0F0F2;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  background-color: #8EB1BF;
+  margin: 0;
+  position: relative;
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, 1fr); */
+}
+h1 {
+  color: white;
+  margin: 0;
+  padding: 80px 0;
+  font-family: 'Yeseva One', cursive;
+  font-size: 50px;
+  font-weight: lighter;
+  /* letter-spacing: 2px; */
+}
+h1, h2, main {
+  margin-left: 10%;
+}
+.header-image {
+  width: 300px;
+  float: right;
+  position: absolute;
+  top: 10px;
+  right: 10%;
+}
+.header-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: solid 5px white;
+}
+nav {
+  text-align: center;
+  background: #c0dbe6;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1em;
+  font-size: 0;
+  font-weight: bold;
+
+  /* padding: 20px 10px; */
+}
+nav li {
+  display: inline-block;
+  padding: 1em;
+  font-size: 16px;
+  /* border-radius: 15%; */
+}
+nav li:hover {
+  background: #9bb288;
+  border-radius: 15%;
+}
+
+.workouts-list ul {
+  list-style-type: none;
+}
+.workouts-list li {
+  padding: 5px;
+  padding-left: 15px;
+  width: 300px;
+  background: #8EB1BF;
+  margin: 5px;
+}
+.workouts-list li:hover {
+  background: #A9A9A9;
+}
+.workouts-list a, nav a {
+  text-decoration: none;
+  color: #FCFCFC;
 }
