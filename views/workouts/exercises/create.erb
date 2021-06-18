@@ -1,11 +1,11 @@
 <h2>Add an exercise to your workout</h2>
-<form action='/workouts/<%=individual_workout[0]['id']%>' method="POST">
+<form action='/workouts/<%=individual_workout['id']%>' method="POST">
 
   <div>
-    <label for="exercise">
+    <label for="exercise_name">
       Exercise name:
     </label>
-    <input type="text" name="exercise">
+    <input type="text" name="exercise_name">
   </div>
 
   <div>
