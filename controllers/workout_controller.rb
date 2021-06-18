@@ -23,9 +23,8 @@ end
 
 get '/workouts/:workout_id' do |workout_id|     # Read individual selected workout
   results = select_joint_table_by(workout_id, nil)
-  puts is_logged_in?
   error_message = check_user()
-  puts error_message
+
   erb :'workouts/show_workout', locals: {individual_workout: results, workout_id: workout_id, error_message: error_message}
 end
 
@@ -55,7 +54,6 @@ get '/workouts/:workout_id/:exercise_id' do |workout_id, exercise_id|
 end
 
 put '/workouts/:workout_id/:exercise_id' do |workout_id, exercise_id|
-  # binding.irb
   results = update_exercise(params[:exercise_name], params[:image_url], params[:weight], params[:reps], params[:sets], params[:notes], params[:exercise_id])
   redirect "/workouts"
 end
@@ -71,38 +69,3 @@ delete '/workouts/:workout_id' do |workout_id|
 
   redirect "/workouts"
 end
-
-# columns = ["exercise_name", "image_url", "weight", "reps", "sets", "notes"]
-# params = params[:exercise], params[:image_url], params[:weight], params[:reps], params[:sets], params[:notes], params[:exercise_id]
-
-# params.map do |param|
-#   if param.empty?
-#     param = 
-#   else
-#     param = param
-#   end
-# end
-
-# columns = ["exercise_name", "image_url", "weight", "reps", "sets", "notes"]
-# key = ["name", "image_url", "weight", "reps", "sets", "notes"]
-
-# params = [params["exercise_name"], params["image_url"], params["weight"], params["reps"], params["sets"], params["notes"], params["exercise_id"]]
-
-# query = "UPDATE exercises SET name=$1, image_url=$2, weight=$3, reps=$4, sets=$5, notes=$6 WHERE id = $7"
-# exercise = select_user_exercises(exercise_id)
-# params.map do |param|
-#   if param.empty?
-#     param = exercise[0][key(param).to_s]
-#   end
-# end
-
-# exercise = select_user_exercises(exercise_id)
-# params = [params["exercise_name"], params["image_url"], params["weight"], params["reps"], params["sets"], params["notes"], params["exercise_id"]]
-# params = [params["exercise_name"], params["image_url"], params["weight"], "", params["sets"], params["notes"], params["exercise_id"]]
-# params = [params["exercise_name"], params["image_url"], params["weight"], exercise[0]["reps"], params["sets"], params["notes"], params["exercise_id"]]
-
-# params.map do |param|
-#   if param.empty?
-#     param = exercise[0][key(param).to_s]
-#   end
-# end
