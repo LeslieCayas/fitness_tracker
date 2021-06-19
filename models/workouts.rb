@@ -62,3 +62,8 @@ def delete_record_with_id(table, id)
   sql_params = [id]
   run_sql(query, sql_params)
 end
+def delete_exercises_from_workouts(workout_id)
+  query = "DELETE FROM exercises WHERE workout_id = $1"
+  sql_params = [workout_id]
+  run_sql(query, sql_params)
+end

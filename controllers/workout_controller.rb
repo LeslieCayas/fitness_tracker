@@ -81,6 +81,6 @@ end
 
 delete '/workouts/:workout_id' do |workout_id|
   delete_record_with_id("workouts", workout_id)
-
+  delete_exercises_from_workouts(workout_id)
   redirect "/workouts"
 end
