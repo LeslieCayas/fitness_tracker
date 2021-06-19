@@ -22,12 +22,12 @@ def select_new_workout()
 end
 
 def select_joint_table_by_workout_id(workout_id)
-  query = "SELECT"
-        + " workouts.id AS workout_id, user_id, workout_name, exercises.id AS exercise_id, exercise_name, image_url, weight, sets, reps, notes, post_date"
-        + " FROM workouts"
-        + " LEFT JOIN exercises"
-        + " ON workouts.id = exercises.workout_id"
-        + " WHERE workout_id = $1"
+  query = 
+  "SELECT workouts.id AS workout_id, user_id, workout_name, exercises.id AS exercise_id, exercise_name, image_url, weight, sets, reps, notes, post_date 
+  FROM workouts 
+  LEFT JOIN exercises ON workouts.id = exercises.workout_id 
+  WHERE workout_id = $1
+  "
   sql_params = [workout_id]
   run_sql(query, sql_params)
 end

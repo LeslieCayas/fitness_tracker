@@ -24,7 +24,7 @@ h1, h2, main {
   margin-left: 15%;
 }
 p, h2 {
-  color:rgb(31, 31, 31)
+  color:rgb(44, 44, 44)
 }
 h2 {
   font-size: 30px;
@@ -133,6 +133,6 @@ main.about {
   margin-top: 50px;
   width: 500px;
 }
-#update, #create-exercise {
+form#update-exercise, form#create-exercise {
   margin-left:15%;
 }

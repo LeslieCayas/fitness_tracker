@@ -36,34 +36,44 @@ def is_valid_email(email)
   at_count = email.count "@"
   dot_count = email.count "."
   email_array = email.split('@')
-  error_message = "Invalid email"
-  success_message = "Success!"
+
   if at_count != 1 
-    return error_message
+    return false
   end
 
   if dot_count == 0 
-    return error_message
+    return false
   end
 
   if email_array.length == 1 
-    return error_message
+    return false
   end
 
   if email_array.last.to_s.count(".") == 0 
-    return error_message
+    return false
   end
 
   email_array.each do |email_split|
     if email_split.include?(".") 
       if email_split.end_with?(".") 
-        return error_message
+        return false
       elsif email_split.start_with?(".") 
-        return error_message
+        return false
       end
     elsif email_split.empty? 
-      return error_message
+      return false
     end
   end
-  return success_message
+  return true
+end
+
+if is_valid_email(params[:email]) == false
+  error_message = "please use a valid email address"
+else
+  error_message = ""
+  query = "INSERT INTO users(email, username, password) VALUES($1, $2, $3)"
+
+  sql_params = [email, username, password]
+
+  run_sql(query, sql_params)
 end
