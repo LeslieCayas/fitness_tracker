@@ -40,7 +40,7 @@ def select_joint_table_by(workout_id, exercise_id)
 end
 
 def new_exercise(workout_id, exercise_name, image_url, weight, reps, sets, notes)
-  query = "INSERT INTO exercises(workout_id, name, image_url, weight, reps, sets, notes) VALUES($1, $2, $3, $4, $5, $6, $7)"
+  query = "INSERT INTO exercises(workout_id, exercise_name, image_url, weight, reps, sets, notes) VALUES($1, $2, $3, $4, $5, $6, $7)"
   sql_params = [workout_id, exercise_name, image_url, weight, reps, sets, notes]
 
   run_sql(query, sql_params)

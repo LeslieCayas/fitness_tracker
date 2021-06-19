@@ -29,12 +29,20 @@ get '/workouts/:workout_id' do |workout_id|     # Read individual selected worko
 end
 
 get '/workouts/:id/add' do |id| 
-  results = select_user_workouts(current_user['id'])
+  # puts current_user['id']
+    # error_message = check_user()
+    if session[:user_id]
+      results = select_user_workouts(current_user['id'])
+      error_message = ""
+    else
+      error_message = "You do not have access to this. Please log in."
+    end
 
-  erb :'workouts/exercises/create', locals: {individual_workout: results[0], id: id}
+  erb :'workouts/exercises/create', locals: {individual_workout: results[0], id: id, error_message: error_message}
 end
 
 post '/workouts/:id' do |id|
+  puts params[:image_url]
   results = new_exercise(id, params[:exercise_name], params[:image_url], params[:weight], params[:reps], params[:sets], params[:notes])
   redirect "/workouts/#{id}"
 end
@@ -54,6 +62,8 @@ get '/workouts/:workout_id/:exercise_id' do |workout_id, exercise_id|
 end
 
 put '/workouts/:workout_id/:exercise_id' do |workout_id, exercise_id|
+  puts params[:image_url]
+
   results = update_exercise(params[:exercise_name], params[:image_url], params[:weight], params[:reps], params[:sets], params[:notes], params[:exercise_id])
   redirect "/workouts"
 end

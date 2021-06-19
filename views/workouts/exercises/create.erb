@@ -1,5 +1,6 @@
 <h2>Add an exercise to your workout</h2>
-<form action='/workouts/<%=individual_workout['id']%>' method="POST">
+<% if is_logged_in? %>
+  <form action="/workouts/<%=individual_workout['id']%>" method="POST">
 
   <div>
     <label for="exercise_name">
@@ -45,4 +46,8 @@
   <input type="submit">
 
 </form>
+<% else %>
+  <p><%=error_message%></p>
+<% end %>
+
 
