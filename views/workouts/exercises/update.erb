@@ -1,5 +1,5 @@
-<h2>Edit <%=individual_workout['name']%></h2>
-<form action='/workouts/<%=individual_workout['workout_id']%>/<%=individual_workout['exercise_id']%>' method="POST">
+<h2>Edit <%=individual_workout['exercise_name']%></h2>
+<form action='/workouts/<%=individual_workout['workout_id']%>/<%=individual_workout['exercise_id']%>' method="POST" id="update-exercise">
   <input type="hidden" name="_method" value="PUT">
   <div>
     <label for="exercise_name">

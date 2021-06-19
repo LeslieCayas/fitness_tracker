@@ -30,3 +30,40 @@ def find_user_by(sql_column, email_value, id_value)
     return nil
   end
 end
+
+
+def is_valid_email(email) 
+  at_count = email.count "@"
+  dot_count = email.count "."
+  email_array = email.split('@')
+  error_message = "Invalid email"
+  success_message = "Success!"
+  if at_count != 1 
+    return error_message
+  end
+
+  if dot_count == 0 
+    return error_message
+  end
+
+  if email_array.length == 1 
+    return error_message
+  end
+
+  if email_array.last.to_s.count(".") == 0 
+    return error_message
+  end
+
+  email_array.each do |email_split|
+    if email_split.include?(".") 
+      if email_split.end_with?(".") 
+        return error_message
+      elsif email_split.start_with?(".") 
+        return error_message
+      end
+    elsif email_split.empty? 
+      return error_message
+    end
+  end
+  return success_message
+end

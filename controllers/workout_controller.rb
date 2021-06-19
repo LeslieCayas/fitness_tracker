@@ -3,6 +3,10 @@ get '/' do
   erb :index
 end
 
+get '/about' do
+  erb :about
+end
+
 get '/workouts' do              # Read list of user's workouts
   results = select_user_workouts(current_user['id'])
 
@@ -22,7 +26,7 @@ post '/workouts' do
 end
 
 get '/workouts/:workout_id' do |workout_id|     # Read individual selected workout
-  results = select_joint_table_by(workout_id, nil)
+  results = select_joint_table_by_workout_id(workout_id)
   error_message = check_user()
 
   erb :'workouts/show_workout', locals: {individual_workout: results, workout_id: workout_id, error_message: error_message}
@@ -42,13 +46,14 @@ get '/workouts/:id/add' do |id|
 end
 
 post '/workouts/:id' do |id|
-  puts params[:image_url]
+
   results = new_exercise(id, params[:exercise_name], params[:image_url], params[:weight], params[:reps], params[:sets], params[:notes])
+
   redirect "/workouts/#{id}"
 end
 
 get '/workouts/:workout_id/:exercise_id/edit' do |workout_id, exercise_id|
-  results = select_joint_table_by(workout_id, nil)
+  results = select_joint_table_by_workout_id(workout_id)
   exercise = select_user_exercises(exercise_id)
 
   erb :'workouts/exercises/update', locals: {individual_workout: results[0]}

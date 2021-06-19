@@ -1,8 +1,7 @@
 <%# welcome page %>
-<h2>Hello,</h2>
 <main class="landing">
 <% if is_logged_in? %>
-  <%=current_user['username']%>
+  <h2>Hello, <%=current_user['username']%></h2>
   <form action="/sessions" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="logout"/>
@@ -11,6 +10,7 @@
   <a href="/workouts/create"> create a workout </a>
 </main>
 <% else %>
+<h2>Welcome!</h2>
   <p>
     <a href="/login">sign in to your account</a> or
     <a href="/sign_up">sign up for a new account</a>
