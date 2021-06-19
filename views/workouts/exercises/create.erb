@@ -1,7 +1,7 @@
 <h2>Add an exercise to your workout</h2>
 <% if is_logged_in? %>
   <main class="add-exercise">
-    <form action="/workouts/<%=individual_workout['id']%>" method="POST" class="add-exercise-form">
+    <form action="/workouts/<%=workout_id%>" method="POST" class="add-exercise-form">
       <div>
         <label for="exercise_name">
           Exercise name:

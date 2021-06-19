@@ -135,7 +135,7 @@ main.individual-routine {
   font-size:1.5em;
 }
 .exercise-details img {
-  width:300px;
+  width:200px;
   height:200px;
   object-fit: cover;
 }
@@ -156,4 +156,7 @@ main.about {
 div.exercise-details {
   background-color:rgb(225, 225, 225);
   border-radius:10px;
+}
+.empty-workout p {
+  margin:0;
 }

@@ -39,9 +39,13 @@
             <li>Weight: <%= exercise['weight'] %>kg</li>
             <li>Reps: <%= exercise['reps'] %></li>
             <li>Sets: <%= exercise['sets'] %></li> 
-            <li>Notes: <%= exercise['notes'] %></li>
+            <li>Notes: 
+              <li><span><%= exercise['post_date'] %>:</span> <%= exercise['notes'] %></li>
+            </li>
           <% if exercise['image_url'].start_with?("http") %>
-            <li>Image:<img src="<%= exercise['image_url']%>" alt=""></li>
+            <li>Image:
+              <li><img src="<%= exercise['image_url']%>" alt=""></li>
+            </li>
           <% else %>
             <li><span>Please enter a valid image URL</span></li>
           <% end %>
@@ -53,7 +57,7 @@
   <% end %>
 <% else %>
 
-  <%=error_message%>
-  <a href="/">Home</a>  
+  <p><%=error_message%>  <a href="/">Home</a>  </p>
+
 
 <% end %>
