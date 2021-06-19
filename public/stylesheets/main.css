@@ -8,8 +8,6 @@ header {
   background-color: #8EB1BF;
   margin: 0;
   position: relative;
-  /* display: grid; */
-  /* grid-template-columns: repeat(2, 1fr); */
 }
 h1 {
   color: white;
@@ -20,7 +18,7 @@ h1 {
   font-weight: lighter;
   /* letter-spacing: 2px; */
 }
-h1, h2, main {
+h1, h2, main, p {
   margin-left: 15%;
 }
 p, h2 {
@@ -28,12 +26,23 @@ p, h2 {
 }
 h2 {
   font-size: 30px;
+  margin-bottom:10px;
 }
 span {
   font-size: 13px;
 }
 main {
   margin-top: 50px;
+}
+input[type=submit], button, button a {
+  border:solid transparent;
+  border-radius: 4px;
+  background-color: #9bb288;
+  color: white;
+}
+button a {
+  text-decoration: none;
+
 }
 .landing h2 {
   margin: 0;
@@ -109,30 +118,42 @@ nav a:hover {
   color: #FCFCFC;
 }
 
-main#individual-routine {
+main.individual-routine {
   display: grid;
   grid-template-columns: repeat(2, 300px);
   gap:10px;
-  width: 500px;
+  width: 800px;
   margin: 0 auto;
-  color:rgb(31, 31, 31)
-
+  margin-bottom: 40px;
+  color:rgb(31, 31, 31);
+  margin-top: 30px;
 }
-#individual-routine a{
-  text-decoration: none;
-  padding: 5px;
+.individual-routine li {
+  list-style: none;
 }
-
-
-input[type=submit]#delete-workout {
-  margin-left: 15%;
-
+#exercise-name {
+  font-size:1.5em;
+}
+.exercise-details img {
+  width:300px;
+  height:200px;
+  object-fit: cover;
 }
 main.about {
-  margin: 0 auto;
-  margin-top: 50px;
-  width: 500px;
+  margin:0 auto;
+  width: 600px;
+  margin-top: 10%;
 }
-form#update-exercise, form#create-exercise {
-  margin-left:15%;
+.sign-up p {
+  margin:0;
+}
+.sign-up-form div, .login-form div, .update-exercise-form div, .add-exercise-form div {
+  margin-bottom: 10px;
+}
+.add-delete {
+  margin-left: 15%;
+}
+div.exercise-details {
+  background-color:rgb(225, 225, 225);
+  border-radius:10px;
 }

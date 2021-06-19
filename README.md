@@ -17,14 +17,16 @@ the name of the exercise, image URL, weights used, reps and sets done as well as
 
 ### Diagrams
 ![app_layout](images/app_layout.png)
-![routes_layout](images/routes_layout.png)
+![routes_layout](images/sinatra_routes_layout.png)
 ![db_layout](images/db_layout.png)
 
 ## Difficulties
 - Using an API to generate images related to the exercise. Could only find premium APIs.
+- Allowing user to update one feature of the exercise without having to re-input previous data.
 
 ## Features Wishlist
 - Allow user to update header image. This can be done by having user submit an image link as a "profile image".
 - Email and password validation.
 - Interaction with an API to generate a relevant image for each exercise.
-  - Could also incorporate videos instead of an image via an embedded player. 
+  - Could also incorporate videos instead of an image via an embedded player.
+- Notify user when they have entered the wrong data type e.g. inserting text in the 'weight', 'reps', 'sets' inputs 

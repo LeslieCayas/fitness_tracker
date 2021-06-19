@@ -2,12 +2,15 @@ require 'bcrypt'
 
 def create_user( email, username, password)
   password_digest = BCrypt::Password.create(password)
-
-  query = "INSERT INTO users(email, username, password) VALUES($1, $2, $3)"
-
-  sql_params = [email, username, password]
-
-  run_sql(query, sql_params)
+  if is_valid_email(email) == false
+    error_message = "Please use a valid email address"
+  elsif is_valid_email(email)
+    error_message = ""
+    query = "INSERT INTO users(email, username, password) VALUES($1, $2, $3)"
+    sql_params = [email, username, password]
+    run_sql(query, sql_params)
+  end
+  return error_message
 end
 
 def find_user_by(sql_column, email_value, id_value)
@@ -65,15 +68,4 @@ def is_valid_email(email)
     end
   end
   return true
-end
-
-if is_valid_email(params[:email]) == false
-  error_message = "please use a valid email address"
-else
-  error_message = ""
-  query = "INSERT INTO users(email, username, password) VALUES($1, $2, $3)"
-
-  sql_params = [email, username, password]
-
-  run_sql(query, sql_params)
 end

@@ -1,46 +1,48 @@
 <h2>Edit <%=individual_workout['exercise_name']%></h2>
-<form action='/workouts/<%=individual_workout['workout_id']%>/<%=individual_workout['exercise_id']%>' method="POST" id="update-exercise">
-  <input type="hidden" name="_method" value="PUT">
-  <div>
-    <label for="exercise_name">
-      Exercise name:
-    </label>
-    <input type="text" name="exercise_name">
-  </div>
+<main class="update-exercise">
+  <form action='/workouts/<%=individual_workout['workout_id']%>/<%=individual_workout['exercise_id']%>' method="POST" class="update-exercise-form">
+    <input type="hidden" name="_method" value="PUT">
+    <div>
+      <label for="exercise_name">
+        Exercise name:
+      </label>
+      <input type="text" name="exercise_name">
+    </div>
 
-  <div>
-    <label for="image_url">
-      Exercise image:
-    </label>
-    <input type="text" name="image_url">
-  </div>
+    <div>
+      <label for="image_url">
+        Exercise image:
+      </label>
+      <input type="text" name="image_url">
+    </div>
 
-  <div>
-    <label for="weight">
-      Weight:
-    </label>
-    <input type="text" name="weight">
-  </div>
+    <div>
+      <label for="weight">
+        Weight:
+      </label>
+      <input type="text" name="weight">
+    </div>
 
-  <div>
-    <label for="reps">
-      Reps:
-    </label>
-    <input type="text" name="reps">
-  </div>
+    <div>
+      <label for="reps">
+        Reps:
+      </label>
+      <input type="text" name="reps">
+    </div>
 
-  <div>
-    <label for="sets">
-      Sets:
-    </label>
-    <input type="text" name="sets">
-  </div>
+    <div>
+      <label for="sets">
+        Sets:
+      </label>
+      <input type="text" name="sets">
+    </div>
 
-  <div>
-    <label for="notes">
-      Notes:
-    </label>
-    <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
-  </div>
-  <input type="submit">
-</form>
+    <div>
+      <label for="notes">
+        Notes:
+      </label>
+      <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+    </div>
+    <input type="submit">
+  </form>
+</main>

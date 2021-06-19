@@ -13,31 +13,39 @@
 
     <h2><%=individual_workout[0]['workout_name']%></h2>
 
-    <form action="/workouts/<%=individual_workout[0]['workout_id']%>" method="POST">
+    <form action="/workouts/<%=individual_workout[0]['workout_id']%>" method="POST" class="add-delete">
+      <button id="add-exercise"><a id="add" href="/workouts/<%=workout_id%>/add">Add exercise</a></button>
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete workout" id="delete-workout">
     </form>
 
-    <main id="individual-routine">
+
+    <main class="individual-routine">
       <% individual_workout.each do |exercise| %>
-        <div>
-          <li><%= exercise['exercise_name']%>   
-            <form action="/workouts/<%=exercise['workout_id']%>/<%=exercise['exercise_id']%>" method="POST">
-              <a href="/workouts/<%=exercise['workout_id']%>/<%=exercise['exercise_id']%>/edit">Edit</a>
-              <input type="hidden" name="_method" value="DELETE">
-              <input type="submit" value="Delete exercise">
-            </form>
-          </li>
+        <div class="exercise-name">
+          <ul>
+            <li id="exercise-name"><%= exercise['exercise_name']%>   
+              <form action="/workouts/<%=exercise['workout_id']%>/<%=exercise['exercise_id']%>" method="POST">
+                <button> <a href="/workouts/<%=exercise['workout_id']%>/<%=exercise['exercise_id']%>/edit">Edit</a> </button>
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete exercise">
+              </form>
+            </li>
+
+          </ul>
+        </div>
+        <div class="exercise-details">
+          <ul>
+            <li>Weight: <%= exercise['weight'] %>kg</li>
+            <li>Reps: <%= exercise['reps'] %></li>
+            <li>Sets: <%= exercise['sets'] %></li> 
+            <li>Notes: <%= exercise['notes'] %></li>
           <% if exercise['image_url'].start_with?("http") %>
-            <li><img src="<%= exercise['image_url']%>" alt=""></li>
+            <li>Image:<img src="<%= exercise['image_url']%>" alt=""></li>
           <% else %>
             <li><span>Please enter a valid image URL</span></li>
           <% end %>
-        </div>
-        <div>
-          <li>Weight: <%= exercise['weight']%></li>
-          <li>Reps: <%= exercise['reps']%></li>
-          <li>Sets: <%= exercise['sets']%></li> 
+          </ul>
         </div>
       <% end %>
     </main>

@@ -1,13 +1,17 @@
 get '/sign_up' do
-  erb :'/users/sign_up', layout: :layout
+  erb :'/users/sign_up', layout: :layout, locals: {message: ''}
 end
 
 post '/users' do
   email = params["email"]
   user = params["username"]
   password = params["password"]
-  create_user(email, user, password)
+  message = create_user(email, user, password)
+  puts message
 
-  redirect '/'
-  erb :index
+  if message == "Please use a valid email address"
+    erb :'/users/sign_up', locals: {message: message}
+  else
+    redirect '/welcome'
+  end
 end

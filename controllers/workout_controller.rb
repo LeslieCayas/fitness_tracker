@@ -33,14 +33,12 @@ get '/workouts/:workout_id' do |workout_id|     # Read individual selected worko
 end
 
 get '/workouts/:id/add' do |id| 
-  # puts current_user['id']
-    # error_message = check_user()
-    if session[:user_id]
-      results = select_user_workouts(current_user['id'])
-      error_message = ""
-    else
-      error_message = "You do not have access to this. Please log in."
-    end
+  if session[:user_id]
+    results = select_user_workouts(current_user['id'])
+    error_message = ""
+  else
+    error_message = "You do not have access to this. Please log in."
+  end
 
   erb :'workouts/exercises/create', locals: {individual_workout: results[0], id: id, error_message: error_message}
 end
