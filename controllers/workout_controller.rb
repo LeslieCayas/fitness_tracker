@@ -41,14 +41,13 @@ get '/workouts/:id/add' do |workout_id|
   else
     error_message = "You do not have access to this. Please log in."
   end
+  
   erb :'workouts/exercises/create', locals: {workout_id: workout_id, error_message: error_message}
 end
 
 post '/workouts/:id' do |id|
-
   results = new_exercise(id, params[:exercise_name], params[:image_url], params[:weight], params[:reps], params[:sets], params[:notes])
-  puts "the workout id"
-  puts id
+
   redirect "/workouts/#{id}"
 end
 

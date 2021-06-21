@@ -33,7 +33,8 @@ def select_joint_table_by_workout_id(workout_id)
 end
 
 def new_exercise(workout_id, exercise_name, image_url, weight, reps, sets, notes)
-  query = "INSERT INTO exercises(workout_id, exercise_name, image_url, weight, reps, sets, notes) VALUES($1, $2, $3, $4, $5, $6, $7)"
+  query = "INSERT INTO exercises(workout_id, exercise_name, image_url, weight, reps, sets, notes) 
+          VALUES($1, $2, $3, $4, $5, $6, $7)"
   sql_params = [workout_id, exercise_name, image_url, weight, reps, sets, notes]
 
   run_sql(query, sql_params)
@@ -60,10 +61,13 @@ end
 def delete_record_with_id(table, id)
   query = "DELETE FROM #{table} WHERE id = $1"
   sql_params = [id]
+  
   run_sql(query, sql_params)
 end
+
 def delete_exercises_from_workouts(workout_id)
   query = "DELETE FROM exercises WHERE workout_id = $1"
   sql_params = [workout_id]
+
   run_sql(query, sql_params)
 end

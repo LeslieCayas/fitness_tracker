@@ -2,8 +2,10 @@
 
 <main class="workouts-list">
   <ul>
+
     <% results.each do |result| %>
       <li><a href="/workouts/<%= result['id']%>"><%= result['workout_name']%></a></li>
     <% end %>
+    
   </ul>
 </main>

@@ -22,6 +22,7 @@
 
     <main class="individual-routine">
       <% individual_workout.each do |exercise| %>
+
         <div class="exercise-name">
           <ul>
             <li id="exercise-name"><%= exercise['exercise_name']%>   
@@ -31,9 +32,9 @@
                 <input type="submit" value="Delete exercise">
               </form>
             </li>
-
           </ul>
         </div>
+
         <div class="exercise-details">
           <ul>
             <li>Weight: <%= exercise['weight'] %>kg</li>
@@ -51,13 +52,13 @@
           <% end %>
           </ul>
         </div>
+
       <% end %>
     </main>
 
   <% end %>
 <% else %>
 
-  <p><%=error_message%>  <a href="/">Home</a>  </p>
-
+  <p><%=error_message%>  <a href="/">Home</a></p>
 
 <% end %>

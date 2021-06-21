@@ -22,5 +22,6 @@ def check_user
   else
     error_message = ""
   end
+  
   return error_message
 end

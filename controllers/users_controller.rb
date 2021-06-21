@@ -7,11 +7,11 @@ post '/users' do
   user = params["username"]
   password = params["password"]
   message = create_user(email, user, password)
-  puts message
 
   if message == "Please use a valid email address"
     erb :'/users/sign_up', locals: {message: message}
   else
     redirect '/welcome'
   end
+  
 end
